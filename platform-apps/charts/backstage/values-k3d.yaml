@@ -135,7 +135,7 @@ backstage:
               schedule:
                 frequency: PT30M
                 timeout: PT3M
-          #guest: {}
+          guest: {}
           oidc:
             development:
               # real metadataUrl -> local cluster lead to "ECONNREFUSED 127.0.0.1:443" - #24935
