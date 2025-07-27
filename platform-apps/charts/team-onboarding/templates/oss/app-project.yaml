@@ -42,10 +42,11 @@ spec:
     {{- end }}
   {{- end }}
   sourceRepos:
-  {{- range $team.sourceRepos }}
-    - {{ quote . }}
-  {{- end }}
-  {{- with $.Values.multiStageKargoAppSetHelmRepo }}
-    - {{ . | quote }}
-  {{- end }}
+{{- range $team.sourceRepos }}
+  - {{ quote . }}
+{{- end }}
+---
+{{- end }}
+{{- end }}
+
 
