@@ -119,6 +119,7 @@ backstage:
           type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
       auth:
+        dangerouslyDisableDefaultAuthPolicy: true
         session:
           secret: ${BACKEND_SECRET} # free sessionsecret for user sessions
         environment: development
