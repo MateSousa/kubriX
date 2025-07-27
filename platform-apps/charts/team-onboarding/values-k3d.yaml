@@ -8,8 +8,8 @@ teams:
       - group: kargo.akuity.io
         kind: Project
     appOfAppsRepo:
-      repoURL: https://github.com/MateSousa/team1-apps
+      repoURL: https://github.com/Aegis-Watcher/team-a-kcd-demo
       path: codespaces-apps
       revision: main
     multiStageKargoAppSet:
-      organization: MateSousa
+      organization: Aegis-Watcher
