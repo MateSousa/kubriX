@@ -1,10 +1,11 @@
 {{- range $team := .Values.teams }}
-{{- if $team.multiStageKargoAppSet }}
+{{- $helmRepo := coalesce $team.multiStageKargoAppSetHelmRepo $.Values.multiStageKargoAppSetHelmRepo }}
+{{- if and $team.multiStageKargoAppSet $helmRepo }}
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: {{ $team.name }}-appset
-  namespace: adn-{{ .name }}
+  namespace: adn-{{ $team.name }}
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -39,7 +40,7 @@ spec:
     spec:
       project: {{ $team.name }}-project
       sources:
-      - repoURL: {{ $.Values.multiStageKargoAppSetHelmRepo }}
+      - repoURL: {{ $helmRepo | quote }}
         targetRevision: '{{ $.Values.default.targetRevision }}'
         path: team-apps/onboarding-apps-charts/multi-stage-app-with-kargo-pipeline
         helm:
@@ -50,11 +51,13 @@ spec:
         ref: values
       destination:
         server: https://kubernetes.default.svc
-        namespace: adn-{{ .name }}
+        namespace: adn-{{ $team.name }}
       syncPolicy:
         automated:
           selfHeal: true
           prune: true
 ---
+{{- else if $team.multiStageKargoAppSet }}
+{{- fail (printf "multiStageKargoAppSetHelmRepo is required (team-level or global) for team %q" $team.name) }}
 {{- end }}
 {{- end }}
