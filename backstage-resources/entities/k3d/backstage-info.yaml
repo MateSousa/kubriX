@@ -27,3 +27,38 @@ spec:
   lifecycle: production
   dependsOn:
     - resource:argocd
+---
+# team: octo-team
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: octo-team
+  namespace: default
+  description: Team responsible for kubriX showcase
+spec:
+  type: team
+  profile:
+    displayName: Octo Team
+  members:
+    - user:default/MateSousa                # links the user entity below
+  children: []            
+  # add sub-teams here if you have them
+---
+# user: octocat (mapped to a GitHub user)
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: MateSousa
+  namespace: default
+  annotations:
+    # Required if you want GitHub-aware plugins and links
+    # format: <github-username>
+    github.com/user-login: MateSousa
+spec:
+  profile:
+    displayName: MateSousa
+    email: matessousa@outlook.com             # use the real email if you want email-based matching
+    picture: https://github.com/octocat.png
+  memberOf:
+    - group:default/octo-team
+
