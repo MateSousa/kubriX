@@ -2,8 +2,6 @@ teams:
   - name: team1
     sourceRepos:
       - "*"
-      - "https://github.com/Aegis-Watcher/*"
-      - "https://github.com/Aegis-Watcher/team-a-kcd-demo"
     clusterResourceWhitelist:
       - group: ""
         kind: Namespace
