@@ -13,4 +13,4 @@ teams:
       revision: main
     multiStageKargoAppSet:
       organization: Aegis-Watcher
-    multiStageKargoAppSetHelmRepo: null
+    multiStageKargoAppSetHelmRepo: https://github.com/Aegis-Watcher/team-a-kcd-demo
