@@ -15,4 +15,4 @@ teams:
       revision: main
     multiStageKargoAppSet:
       organization: Aegis-Watcher
-    multiStageKargoAppSetHelmRepo: https://example.com/helm-charts
+    multiStageKargoAppSetHelmRepo: null
